@@ -42,7 +42,7 @@ function Weekly() {
     if (!plan) return;
     const ids = templates.filter((t) => plan[t.id]?.include).map((t) => t.id);
     const next = { ...plan };
-    autoDistribute(ids).forEach((a) => (next[a.id] = { ...next[a.id], person: a.person, day: a.day }));
+    autoDistribute(ids).forEach((a) => (next[a.id] = { include: true, ...next[a.id], person: a.person, day: a.day }));
     setPlan(next);
   };
   const confirmPlan = async () => {
@@ -50,7 +50,7 @@ function Weekly() {
     const rows = templates
       .filter((t) => plan[t.id]?.include)
       .map((t) => {
-        const a = plan[t.id];
+        const a = plan[t.id]!;
         return { title: t.title, description: null, assignee: a.person, created_by: profile, date: toKey(addDays(week, a.day)), template_id: t.id, seen: a.person === profile };
       });
     await api.insertMany(rows);
@@ -63,7 +63,7 @@ function Weekly() {
 
       <div className="mb-4 flex items-center justify-between rounded-2xl bg-card p-2 shadow-soft">
         <button onClick={() => setWeek(addDays(week, -7))} aria-label="Semana anterior" className="rounded-full p-2 hover:bg-muted"><ChevronLeft /></button>
-        <p className="font-semibold">{fmt(days[0], "d MMM")} – {fmt(days[6], "d MMM")}</p>
+        <p className="font-semibold">{fmt(days[0]!, "d MMM")} – {fmt(days[6]!, "d MMM")}</p>
         <button onClick={() => setWeek(addDays(week, 7))} aria-label="Semana siguiente" className="rounded-full p-2 hover:bg-muted"><ChevronRight /></button>
       </div>
 
@@ -112,7 +112,7 @@ function Weekly() {
             <Shuffle className="size-4" /> Repartir automáticamente
           </button>
           {templates.map((t) => {
-            const a = plan[t.id];
+            const a = plan[t.id]!;
             if (!a) return null;
             const set = (patch: Partial<Plan[string]>) => setPlan({ ...plan, [t.id]: { ...a, ...patch } });
             return (

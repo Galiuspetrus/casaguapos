@@ -48,7 +48,7 @@ function Calendar() {
 
   const move = (n: number) => setCursor((c) => (view === "week" ? addDays(c, 7 * n) : addMonths(c, n)));
   const today = toKey(new Date());
-  const title = view === "week" ? `${fmt(days[0], "d MMM")} – ${fmt(days[6], "d MMM")}` : fmt(cursor, "MMMM yyyy");
+  const title = view === "week" ? `${fmt(days[0]!, "d MMM")} – ${fmt(days[6]!, "d MMM")}` : fmt(cursor, "MMMM yyyy");
   const dayTasks = byDay[selected] ?? [];
 
   return (

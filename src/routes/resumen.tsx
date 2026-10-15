@@ -40,7 +40,7 @@ function Summary() {
       <h2 className="mb-3 text-2xl font-semibold">Resumen semanal</h2>
       <div className="mb-4 flex items-center justify-between rounded-2xl bg-card p-2 shadow-soft">
         <button onClick={() => setWeek(addDays(week, -7))} aria-label="Semana anterior" className="rounded-full p-2 hover:bg-muted"><ChevronLeft /></button>
-        <p className="font-semibold">{fmt(days[0], "d MMM")} – {fmt(days[6], "d MMM")}</p>
+        <p className="font-semibold">{fmt(days[0]!, "d MMM")} – {fmt(days[6]!, "d MMM")}</p>
         <button onClick={() => setWeek(addDays(week, 7))} aria-label="Semana siguiente" className="rounded-full p-2 hover:bg-muted"><ChevronRight /></button>
       </div>
 
@@ -62,13 +62,13 @@ function Summary() {
       <div className="mt-4 rounded-3xl bg-card p-5 shadow-soft">
         <h3 className="mb-3 font-semibold">Hechas por día</h3>
         <div className="flex h-36 items-end justify-between gap-2">
-          {perDay.map(([s, d], i) => (
+          {perDay.map(([s = 0, d = 0], i) => (
             <div key={i} className="flex flex-1 flex-col items-center gap-1">
               <div className="flex h-28 w-full items-end justify-center gap-0.5">
                 <div className="w-1/2 rounded-t-md bg-sheila" style={{ height: `${(s / maxDay) * 100}%` }} />
                 <div className="w-1/2 rounded-t-md bg-diego" style={{ height: `${(d / maxDay) * 100}%` }} />
               </div>
-              <span className="text-xs text-muted-foreground">{fmt(days[i], "EEEEE")}</span>
+              <span className="text-xs text-muted-foreground">{fmt(days[i]!, "EEEEE")}</span>
             </div>
           ))}
         </div>

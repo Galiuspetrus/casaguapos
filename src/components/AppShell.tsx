@@ -77,7 +77,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             <p className="text-sm text-muted-foreground">No tienes tareas nuevas.</p>
           ) : (
             <>
-              <p className="mb-2 font-semibold">{NAMES[unseen[0].created_by]} te ha añadido:</p>
+              <p className="mb-2 font-semibold">{NAMES[unseen[0]!.created_by]} te ha añadido:</p>
               <ul className="mb-3 list-disc pl-5 text-sm">
                 {unseen.map((t) => <li key={t.id}>{t.title} · {t.date}</li>)}
               </ul>
@@ -90,7 +90,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       )}
       {!showNew && unseen.length > 0 && (
         <button onClick={() => setShowNew(true)} className={cn("mx-4 mb-3 block w-[calc(100%-2rem)] rounded-2xl px-4 py-2 text-left text-sm font-semibold", isS ? "bg-sheila-soft text-sheila" : "bg-diego-soft text-diego")}>
-          ✨ {NAMES[unseen[0].created_by]} te ha añadido {unseen.length} tarea{unseen.length > 1 ? "s" : ""} nueva{unseen.length > 1 ? "s" : ""}
+          ✨ {NAMES[unseen[0]!.created_by]} te ha añadido {unseen.length} tarea{unseen.length > 1 ? "s" : ""} nueva{unseen.length > 1 ? "s" : ""}
         </button>
       )}
 
