@@ -6,9 +6,9 @@ import { cn } from "@/lib/utils";
 
 function ProfilePicker({ onPick }: { onPick: (p: Person) => void }) {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center gap-8 px-6">
+    <div className="flex min-h-screen flex-col items-center justify-center gap-8 px-6 pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]">
       <div className="text-center">
-        <p className="text-5xl">🏡</p>
+        <img src="/icon.svg" alt="" className="mx-auto size-24 rounded-[22%] shadow-soft" />
         <h1 className="mt-3 text-4xl font-semibold text-couple">Nuestro hogar</h1>
         <p className="mt-2 text-lg text-muted-foreground">¿Quién eres?</p>
       </div>
@@ -47,7 +47,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   const isS = profile === "sheila";
   return (
     <div className="mx-auto min-h-screen max-w-2xl pb-28">
-      <header className="sticky top-0 z-40 flex items-center justify-between bg-background/90 px-4 py-3 backdrop-blur">
+      <header className="sticky top-0 z-40 flex items-center justify-between bg-background/90 px-4 py-3 pt-[calc(0.75rem+env(safe-area-inset-top))] backdrop-blur">
         <h1 className="text-2xl font-semibold text-couple">Nuestro hogar</h1>
         <div className="flex items-center gap-2">
           <button
