@@ -80,7 +80,7 @@ function Calendar() {
 
       <div className="mb-3 flex items-center justify-between">
         <button onClick={() => move(-1)} aria-label="Anterior" className="rounded-full p-2 hover:bg-muted"><ChevronLeft /></button>
-        <h2 className="text-lg font-semibold capitalize">{title}</h2>
+        <h2 className="text-lg font-semibold first-letter:uppercase">{title}</h2>
         <button onClick={() => move(1)} aria-label="Siguiente" className="rounded-full p-2 hover:bg-muted"><ChevronRight /></button>
       </div>
 
@@ -133,7 +133,7 @@ function Calendar() {
 
       <section className="mt-5">
         <div className="mb-2 flex items-center justify-between">
-          <h3 className="text-lg font-semibold capitalize">{fmt(fromKey(selected), "EEEE d 'de' MMMM")}</h3>
+          <h3 className="text-lg font-semibold first-letter:uppercase">{fmt(fromKey(selected), "EEEE d 'de' MMMM")}</h3>
           <button onClick={() => setForm({ open: true, date: selected })} className="flex items-center gap-1 rounded-full bg-primary px-3 py-1.5 text-sm font-semibold text-primary-foreground">
             <Plus className="size-4" /> Añadir
           </button>

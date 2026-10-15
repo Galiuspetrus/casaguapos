@@ -25,7 +25,7 @@ function Today() {
   const today = toKey(new Date());
   return (
     <AppShell>
-      <p className="mb-4 text-lg capitalize text-muted-foreground">{fmt(new Date(), "EEEE d 'de' MMMM")}</p>
+      <p className="mb-4 text-lg first-letter:uppercase text-muted-foreground">{fmt(new Date(), "EEEE d 'de' MMMM")}</p>
       <div className="grid gap-4 sm:grid-cols-2">
         {PEOPLE.map((p) => {
           const list = tasks.filter((t) => t.date === today && t.assignee === p);
