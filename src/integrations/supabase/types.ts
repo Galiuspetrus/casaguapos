@@ -14,7 +14,63 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      tasks: {
+        Row: {
+          assignee: string
+          created_at: string
+          created_by: string
+          date: string
+          description: string | null
+          done: boolean
+          id: string
+          seen: boolean
+          template_id: string | null
+          title: string
+        }
+        Insert: {
+          assignee: string
+          created_at?: string
+          created_by: string
+          date: string
+          description?: string | null
+          done?: boolean
+          id?: string
+          seen?: boolean
+          template_id?: string | null
+          title: string
+        }
+        Update: {
+          assignee?: string
+          created_at?: string
+          created_by?: string
+          date?: string
+          description?: string | null
+          done?: boolean
+          id?: string
+          seen?: boolean
+          template_id?: string | null
+          title?: string
+        }
+        Relationships: []
+      }
+      weekly_templates: {
+        Row: {
+          created_at: string
+          id: string
+          title: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          title: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          title?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
